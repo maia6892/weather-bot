@@ -75,7 +75,7 @@
         "kind": 5,
         "importPath": "main",
         "description": "main",
-        "peekOfCode": "bot = telebot.TeleBot(os.getenv('TOKEN'))\nAPI = 'd1445c5cdcc719f8cda85ac8ed62bb9b'\n@bot.message_handler(commands=['start'])\ndef start(message):\n    bot.send_message(message.chat.id, f'Hello, {message.from_user.username}! Please write your city.')\n@bot.message_handler(content_types=['text'])\ndef get_weather (message):\n    city = message.text.strip().lower()\n    res = requests.get(f'https://api.openweathermap.org/data/2.5/weather?q={city}&appid={API}&units=metric')\n    if res.status_code == 200:",
+        "peekOfCode": "bot = telebot.TeleBot(os.getenv('TOKEN'))\nAPI = os.getenv('API')\n@bot.message_handler(commands=['start'])\ndef start(message):\n    bot.send_message(message.chat.id, f'Hello, {message.from_user.username}! Please write your city.')\n@bot.message_handler(content_types=['text'])\ndef get_weather (message):\n    city = message.text.strip().lower()\n    res = requests.get(f'https://api.openweathermap.org/data/2.5/weather?q={city}&appid={API}&units=metric')\n    if res.status_code == 200:",
         "detail": "main",
         "documentation": {}
     },
@@ -84,7 +84,7 @@
         "kind": 5,
         "importPath": "main",
         "description": "main",
-        "peekOfCode": "API = 'd1445c5cdcc719f8cda85ac8ed62bb9b'\n@bot.message_handler(commands=['start'])\ndef start(message):\n    bot.send_message(message.chat.id, f'Hello, {message.from_user.username}! Please write your city.')\n@bot.message_handler(content_types=['text'])\ndef get_weather (message):\n    city = message.text.strip().lower()\n    res = requests.get(f'https://api.openweathermap.org/data/2.5/weather?q={city}&appid={API}&units=metric')\n    if res.status_code == 200:\n        data = json.loads(res.text)",
+        "peekOfCode": "API = os.getenv('API')\n@bot.message_handler(commands=['start'])\ndef start(message):\n    bot.send_message(message.chat.id, f'Hello, {message.from_user.username}! Please write your city.')\n@bot.message_handler(content_types=['text'])\ndef get_weather (message):\n    city = message.text.strip().lower()\n    res = requests.get(f'https://api.openweathermap.org/data/2.5/weather?q={city}&appid={API}&units=metric')\n    if res.status_code == 200:\n        data = json.loads(res.text)",
         "detail": "main",
         "documentation": {}
     }

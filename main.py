@@ -8,7 +8,7 @@ from dotenv import load_dotenv
 load_dotenv()
 
 bot = telebot.TeleBot(os.getenv('TOKEN'))
-API = 'd1445c5cdcc719f8cda85ac8ed62bb9b'
+API = os.getenv('API')
 
 @bot.message_handler(commands=['start'])
 def start(message):
