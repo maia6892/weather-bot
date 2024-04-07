@@ -1,0 +1,91 @@
+[
+    {
+        "label": "os",
+        "kind": 6,
+        "isExtraImport": true,
+        "importPath": "os",
+        "description": "os",
+        "detail": "os",
+        "documentation": {}
+    },
+    {
+        "label": "telebot",
+        "kind": 6,
+        "isExtraImport": true,
+        "importPath": "telebot",
+        "description": "telebot",
+        "detail": "telebot",
+        "documentation": {}
+    },
+    {
+        "label": "requests",
+        "kind": 6,
+        "isExtraImport": true,
+        "importPath": "requests",
+        "description": "requests",
+        "detail": "requests",
+        "documentation": {}
+    },
+    {
+        "label": "json",
+        "kind": 6,
+        "isExtraImport": true,
+        "importPath": "json",
+        "description": "json",
+        "detail": "json",
+        "documentation": {}
+    },
+    {
+        "label": "math",
+        "kind": 6,
+        "isExtraImport": true,
+        "importPath": "math",
+        "description": "math",
+        "detail": "math",
+        "documentation": {}
+    },
+    {
+        "label": "load_dotenv",
+        "importPath": "dotenv",
+        "description": "dotenv",
+        "isExtraImport": true,
+        "detail": "dotenv",
+        "documentation": {}
+    },
+    {
+        "label": "start",
+        "kind": 2,
+        "importPath": "main",
+        "description": "main",
+        "peekOfCode": "def start(message):\n    bot.send_message(message.chat.id, f'Hello, {message.from_user.username}! Please write your city.')\n@bot.message_handler(content_types=['text'])\ndef get_weather (message):\n    city = message.text.strip().lower()\n    res = requests.get(f'https://api.openweathermap.org/data/2.5/weather?q={city}&appid={API}&units=metric')\n    if res.status_code == 200:\n        data = json.loads(res.text)\n        temp = data['main']['temp']\n        wind = data['wind']['speed']",
+        "detail": "main",
+        "documentation": {}
+    },
+    {
+        "label": "get_weathe",
+        "kind": 2,
+        "importPath": "main",
+        "description": "main",
+        "peekOfCode": "def get_weather (message):\n    city = message.text.strip().lower()\n    res = requests.get(f'https://api.openweathermap.org/data/2.5/weather?q={city}&appid={API}&units=metric')\n    if res.status_code == 200:\n        data = json.loads(res.text)\n        temp = data['main']['temp']\n        wind = data['wind']['speed']\n        bot.reply_to(message, f'Weather now: {math.trunc(temp)}°C\\nWind speed now: {math.trunc(wind)} m/s')\n        if wind < 20 and data[\"weather\"][0]['main'] == 'Clear':\n            bot.send_message(message.chat.id, \"The weather is perfect for a walk now!\")",
+        "detail": "main",
+        "documentation": {}
+    },
+    {
+        "label": "bot",
+        "kind": 5,
+        "importPath": "main",
+        "description": "main",
+        "peekOfCode": "bot = telebot.TeleBot(os.getenv('TOKEN'))\nAPI = 'd1445c5cdcc719f8cda85ac8ed62bb9b'\n@bot.message_handler(commands=['start'])\ndef start(message):\n    bot.send_message(message.chat.id, f'Hello, {message.from_user.username}! Please write your city.')\n@bot.message_handler(content_types=['text'])\ndef get_weather (message):\n    city = message.text.strip().lower()\n    res = requests.get(f'https://api.openweathermap.org/data/2.5/weather?q={city}&appid={API}&units=metric')\n    if res.status_code == 200:",
+        "detail": "main",
+        "documentation": {}
+    },
+    {
+        "label": "API",
+        "kind": 5,
+        "importPath": "main",
+        "description": "main",
+        "peekOfCode": "API = 'd1445c5cdcc719f8cda85ac8ed62bb9b'\n@bot.message_handler(commands=['start'])\ndef start(message):\n    bot.send_message(message.chat.id, f'Hello, {message.from_user.username}! Please write your city.')\n@bot.message_handler(content_types=['text'])\ndef get_weather (message):\n    city = message.text.strip().lower()\n    res = requests.get(f'https://api.openweathermap.org/data/2.5/weather?q={city}&appid={API}&units=metric')\n    if res.status_code == 200:\n        data = json.loads(res.text)",
+        "detail": "main",
+        "documentation": {}
+    }
+]
